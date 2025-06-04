@@ -17,22 +17,22 @@ This is a multistep Next.js app to convert raw text into structured knowledge ba
 # Set up
 
 1. Clone the repository
-    Open git bash
-    git clone https://github.com/aiswaryak1997/Knowledge_Base_Organiser.git
-    cd Knowledge_Base_Organiser
+    - Open git bash
+    - git clone https://github.com/aiswaryak1997/Knowledge_Base_Organiser.git
+    - cd Knowledge_Base_Organiser
 
 2. Install Dependencies
     Make sure you have Node.js (18+ recommended) and npm installed. Then run:
-    npm install
+    - npm install
 
 3. Set up Environment variables
     - Create a .env.local file in the root directory:
      touch .env.local
     - Use .env.local.example to know what variables are required
 4. Run the Development Server
-    npm run dev
-    - App will be available at:
-        http://localhost:3000
+    - npm run dev
+    App will be available at:
+    - http://localhost:3000
 
 # API Key Handling
 This project uses process.env.OPENAI_API_KEY only in server-side API routes under /app/api/.
@@ -49,7 +49,7 @@ Prompts are written to:
 - Add clarity and completeness to knowledge base content
 - Preserve tone and structure
 - Be deterministic and repeatable
-Example prompt used in app/api/enrichedSection:
+- Example prompt used in app/api/enrichedSection:
     You're an assistant improving documentation.
         Instructions:
             - Rewrite the section heading to be clearer or more descriptive, if necessary.
