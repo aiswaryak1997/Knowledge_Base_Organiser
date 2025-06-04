@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Knowledge base organizer
 
-## Getting Started
+This is a multistep Next.js app to convert raw text into structured knowledge base data and enrich it using OpenAI's API.
 
-First, run the development server:
+# Features
+-Upload multiple files or paste raw text (Step 1)
+-View structured data (Step 2)
+-Can view the structerd and enriched sections side by side where user can accept the enriched version or keep structured version as it is and save the content (Step 3)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Technologies used
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [OpenAI API](https://platform.openai.com/)
+- React Hooks (useState, useEffect)
+- Markdown Rendering (`react-markdown`)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Set up
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+    Open git bash
+    git clone https://github.com/aiswaryak1997/Knowledge_Base_Organiser.git
+    cd Knowledge_Base_Organiser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install Dependencies
+    Make sure you have Node.js (18+ recommended) and npm installed. Then run:
+    npm install
 
-## Learn More
+3. Set up Environment variables
+    - Create a .env.local file in the root directory:
+     touch .env.local
+    - Use .env.local.example to know what variables are required
+4. Run the Development Server
+    npm run dev
+    - App will be available at:
+        http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+# API Key Handling
+This project uses process.env.OPENAI_API_KEY only in server-side API routes under /app/api/.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- The OpenAI key is never exposed to the client/browser
+- All calls to OpenAI are made via secure backend endpoints
+- The .env.local file is git-ignored
+- .env.local.example is provided for clarity without risking secrets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Prompt Engineering
+The app uses OpenAI to enrich structured text with clear, context-aware prompts that guide the model.
 
-## Deploy on Vercel
+Prompts are written to:
+- Add clarity and completeness to knowledge base content
+- Preserve tone and structure
+- Be deterministic and repeatable
+Example prompt used in app/api/enrichedSection:
+    You're an assistant improving documentation.
+        Instructions:
+            - Rewrite the section heading to be clearer or more descriptive, if necessary.
+            - Improve the content for clarity and professionalism.
+            - Keep the original intent of both the heading and the body.
+            - Do not remove the section heading; always include one.
+            - Output only the enriched version with the heading followed by a blank line and improved content.
+            Original section: + structuredData
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Output Handling
+- Each section is enriched individually
+- Users can compare original and enriched side-by-side
+- Users decide whether to accept or reject each suggestion based on check button provided
+- Final content is built from the user's decisions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Best Practices Followed
+- API Key is hidden from frontend using .env.local
+- OpenAI calls are server-side only
+- Prompt engineering is controlled and purposeful
+- Sensitive info is git-ignored
+- Clear step-by-step UX
+- Modular, reusable React components
+
+# Author
+Aiswarya Kizhakkadath
+https://github.com/aiswaryak1997
