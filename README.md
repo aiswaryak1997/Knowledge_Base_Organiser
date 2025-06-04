@@ -24,6 +24,11 @@ This is a multistep Next.js app to convert raw text into structured knowledge ba
 2. Install Dependencies
     Make sure you have Node.js (18+ recommended) and npm installed. Then run:
     - npm install
+    - npm install tailwindcss@^3 autoprefixer postcss
+    - npm install react-markdown
+    - npm install openai
+    - npm install lowdb@^3
+    - npm install uuid
 
 3. Set up Environment variables
     - Create a .env.local file in the root directory:
