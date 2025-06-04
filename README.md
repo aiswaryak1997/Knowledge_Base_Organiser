@@ -29,6 +29,7 @@ This is a multistep Next.js app to convert raw text into structured knowledge ba
     - Create a .env.local file in the root directory:
      touch .env.local
     - Use .env.local.example to know what variables are required
+    - Add you API secret key in .env.local
 4. Run the Development Server
     - npm run dev
     App will be available at:
